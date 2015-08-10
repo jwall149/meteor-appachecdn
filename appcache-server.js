@@ -137,6 +137,7 @@ WebApp.connectHandlers.use(function (req, res, next) {
     if (resource.where === 'client' &&
         ! RoutePolicy.classify(resource.url) &&
         !resource.cacheable) {
+      if (cdnPrefix) { manifest += cdnPrefix; }
       manifest += resource.url + " " + resource.url +
         "?" + resource.hash + "\n";
     }
